@@ -1,0 +1,36 @@
+<form id="search-form" class="form-inline" (ngSubmit)="onSubmit()"  #searchForm="ngForm" >
+  <div class="form-group">
+    <input type="text" class="form-control" id="search-term" name="term"
+    placeholder="Search Term"
+    [(ngModel)]="searchData.term" name="term"
+    #term="ngModel" required>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="location" name="location" placeholder="Location Search"
+    [(ngModel)]="searchData.location" name="location"
+    #location="ngModel" required
+    >
+  </div>
+
+  <button [disabled]="!searchForm.form.valid || loading" type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<div class="row search-results">
+  <div class="col-sm-6 col-md-4" *ngFor="let business of results" >
+    <div class="thumbnail">
+      <img class="media-object" src="{{business.logo}}" alt="{{business.name}}">
+      <div class="caption">
+        <h3>{{business.name}}</h3>
+        <a href="tel:{{business.phone_number}}"><h4>{{business.phone_number}}</h4></a>
+        <p>{{business.address}}</p>
+        <p><a href="{{business.url}}" class="btn btn-primary" role="button">More Details</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="text-center">
+	<p *ngIf="!loading && !results.length">No Businesses to Show</p>
+  <button [disabled]="loading" *ngIf="nextPage" class="btn btn-primary" (click)="loadMore()" >Load More</button>
+</div>

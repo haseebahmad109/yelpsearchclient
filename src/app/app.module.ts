@@ -5,14 +5,17 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
+import { YelpModule } from './yelp/yelp.module';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    YelpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

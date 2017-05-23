@@ -16,6 +16,8 @@ export class SearchComponent implements OnInit {
 
 	loading = false;
 
+  errorMessage;
+
   constructor(private yelpService: YelpService) { }
 
   ngOnInit() {}
@@ -30,6 +32,11 @@ export class SearchComponent implements OnInit {
 			
 			this.loading = false;			
 
+    }, err => {
+      
+      this.loading = false;
+      console.log(err);
+    
     });
   }
 

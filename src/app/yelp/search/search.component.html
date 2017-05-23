@@ -30,7 +30,7 @@
 </div>
 
 
-<div class="text-center">
+<div class="text-center load-more-container">
 	<p *ngIf="!loading && !results.length">No Businesses to Show</p>
   <button [disabled]="loading" *ngIf="nextPage" class="btn btn-primary" (click)="loadMore()" >Load More</button>
 </div>
